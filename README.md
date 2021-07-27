@@ -95,6 +95,8 @@ export AWS_SECRET_ACCESS_KEY="YYYYYYYYYYYYYYYYYYYYYYYYY"
 export AWS_REGION=ca-central-1
 export PARENT_ID=r-XXXX
 export ACCOUNT_ID_IC=XXXXXXX
+declare -A ACCOUNTS
+export ACCOUNTS=(["dev"]="XXXXXXX" ["stage"]="XXXXX" ["prod"]="XXXXXX" )
 ```
 
 * Execute a Terraform Plan on the project folder
