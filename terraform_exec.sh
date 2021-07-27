@@ -6,7 +6,7 @@ set -o errexit
 echo "###############################"
 echo "## Starting Terraform script ##"
 echo "###############################"
-
+declare -A ACCOUNTS
 ENV="${ENV:-dev}"
 AWS_REGION="${AWS_REGION:-ca-central-1}"
 PARENT_ID="${PARENT_ID:-r-xxxx}"
