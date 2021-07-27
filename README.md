@@ -99,6 +99,15 @@ declare -A ACCOUNTS
 export ACCOUNTS=(["dev"]="XXXXXXX" ["stage"]="XXXXX" ["prod"]="XXXXXX" )
 ```
 
+The `terraform_exec.sh` script receives one parameter that indicates the action to be executed.
+
+```
+0 = Executes a terraform plan
+1 = Executes a terraform apply
+2 = Executes a terraform destroy
+```
+
+
 * Execute a Terraform Plan on the project folder
 
 ```
