@@ -24,12 +24,12 @@ The credentials requested belogs to the user `project-deploy-user`  created at t
 |AWS_REGION | ca-central-1| n/a |
 | PARENT_ID | r-au39 | Organization Unit ID for the master account |
 | ACCOUNT_ID_IC | XXXXXXXX | Account ID for the Interconnect account |
-| DEPLOYMENT_ROLE | project-deploy-role | n/a |
+| DEPLOYMENT_ROLE | project-deploy-role | Role that has to be created in each account that will be added to the VPN Connection |
 | PROFILE_IC | project-role-ic | Interconnect Profile Name  |
 | PROFILE_BASE | project-role- | Base name for the different profile accounts |
 | SOURCE_PROFILE | project | Profile name for the base or initial Profile used to create the others profiles |
 | BUCKET_NAME | project-vpn-terraform-state | Bucket name where the Terraform state file will be stored on the Interconnect account|
-| STATE_FILE_PATH  | vpn-state.tfstate | n/a |
+| STATE_FILE_PATH  | vpn-state.tfstate | Terraform state file name stored at the S3 Bucket |
 | BUCKET_NAME_BASE | project-vpc-terraform-state | Bucket name where the Terraform state file will be stored on the environment accounts |
 |ACCOUNTS|( ["dev"]="XXXXXXX" ["stage"]="XXXXX" ["prod"]="XXXXXX" )| Accounts that will be attached to the transit Gateway |
 
