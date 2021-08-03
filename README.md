@@ -1,6 +1,6 @@
 ## Overview
 
-This Terraform Script will show us how to configure and share a VPN accross multiple accounts.
+This Terraform Script will show us how to configure and share a VPN accross multiple accounts, also this script needs be applied from localhost/workstation and not to be part of a CI/CD pipeline. (**ONE TIME SCRIPT**)
 
 You'll find a folder named `envs` that contains the values for our environments.
 
