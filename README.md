@@ -59,8 +59,8 @@ The credentials requested belogs to the user `project-deploy-user`  created at t
 |AWS_ACCESS_KEY_ID| n/a | n/a |
 |AWS_SECRET_ACCESS_KEY| n/a | n/a |
 |AWS_REGION | ca-central-1| n/a |
-| PARENT_ID | r-xx88 | Organization Unit ID for the master account |
-| ACCOUNT_ID_IC | XXXXXXXX | Account ID for the Interconnect account |
+| PARENT_ID | r-xx88 | Organization Unit ID from the master account |
+| ACCOUNT_ID_IC | XXXXXXXX | Interconnect's Account ID  |
 | DEPLOYMENT_ROLE | project-deploy-role | Role that has to be created in each account that will be added to the VPN Connection |
 | PROFILE_IC | project-role-ic | Interconnect Profile Name  |
 | PROFILE_BASE | project-role- | Base name for the different profile accounts |
