@@ -4,6 +4,43 @@ This Terraform Script will show us how to configure and share a VPN accross mult
 
 You'll find a folder named `envs` that contains the values for our environments.
 
+### Pre-Requisites
+
+* VPCs, private subnets and route tables created on each account that will be connected to the VPN.
+* Subnets and route tables needs a tag that will be used to filter the subnets and route tables attached to the VPN.
+* Deployment user with programatic access created at the Root account with `AWSAdministratorAccess`.
+* AssumeRole policy created at Root account and assigned to the Deployment User.
+```
+Assume Role Policy applied on Deployment User
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "*"
+    }
+}
+
+```
+* Deployment Role with `AdministratorAccess` and a Trust Relationship with the Deployment User created at Root account. This Deployment role have to be created in every Account that will be attached to the VPN.
+```
+Trust Relationship
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::XXXXXXXXX:user/deployment-user"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {}
+    }
+  ]
+}
+```
+* An S3 bucket on each account involved in the VPN creation to store the terraform state file.
+
 
 ***
 #### NOTE
@@ -22,7 +59,7 @@ The credentials requested belogs to the user `project-deploy-user`  created at t
 |AWS_ACCESS_KEY_ID| n/a | n/a |
 |AWS_SECRET_ACCESS_KEY| n/a | n/a |
 |AWS_REGION | ca-central-1| n/a |
-| PARENT_ID | r-au39 | Organization Unit ID for the master account |
+| PARENT_ID | r-xx88 | Organization Unit ID for the master account |
 | ACCOUNT_ID_IC | XXXXXXXX | Account ID for the Interconnect account |
 | DEPLOYMENT_ROLE | project-deploy-role | Role that has to be created in each account that will be added to the VPN Connection |
 | PROFILE_IC | project-role-ic | Interconnect Profile Name  |
