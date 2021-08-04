@@ -18,7 +18,7 @@ SOURCE_PROFILE="${SOURCE_PROFILE:-projcet}"
 BUCKET_NAME_IC="${BUCKET_NAME:-project-vpn-terraform-state}"
 BUCKET_NAME_BASE="${BUCKET_NAME_BASE:-project-vpc-terraform-state}"
 STATE_FILE_PATH="${STATE_FILE_PATH:-vpn-state.tfstate}"
-ACCOUNTS="${ACCOUNTS:-( ["dev"]="XXXXXX" ["stage"]="XXXXXXX" ["prod"]="XXXXXX" )}"
+ACCOUNTS=( ["dev"]="XXXXXX" ["stage"]="XXXXXXX" ["prod"]="XXXXXX" )
 
 OU_LIST=$(aws organizations list-organizational-units-for-parent --parent-id ${PARENT_ID} | jq '.OrganizationalUnits[].Arn' | jq -s .)
 APPLY=${1:-0} #If set terraform will force apply changes
@@ -27,9 +27,8 @@ aws configure set role_arn "arn:aws:iam::${ACCOUNT_ID_IC}:role/${DEPLOYMENT_ROLE
 aws configure set source_profile ${SOURCE_PROFILE} --profile $PROFILE_IC
 aws configure set role_session_name test-session --profile $PROFILE_IC
 export AWS_PROFILE=$PROFILE_IC
-declare -A ACCOUNTS
 
-ACTIONS=( "plan" "apply --auto approve" "destroy --auto-approve" )
+ACTIONS=( "plan" "apply --auto-approve" "destroy --auto-approve" )
 terraform init \
 -backend-config="bucket=${BUCKET_NAME}" \
 -backend-config="key=${STATE_FILE_PATH}" \
